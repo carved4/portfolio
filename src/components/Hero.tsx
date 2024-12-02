@@ -11,7 +11,7 @@ export default function Hero() {
           className="text-center"
         >
           <h1 className="text-4xl sm:text-6xl font-bold mb-6">
-            Hi, I'm <span className="heading-gradient">Your Name</span>
+            Hi, I'm <span className="heading-gradient">Owen Smith</span>
           </h1>
           <p className="text-xl sm:text-2xl text-dimWhite mb-8">
             Computer Science Student | Creating Beautiful Digital Experiences
