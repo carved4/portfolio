@@ -14,7 +14,7 @@ export default function Hero() {
             Hi, I'm <span className="heading-gradient">Your Name</span>
           </h1>
           <p className="text-xl sm:text-2xl text-dimWhite mb-8">
-            Full Stack Developer | Creating Beautiful Digital Experiences
+            Computer Science Student | Creating Beautiful Digital Experiences
           </p>
           <motion.div
             initial={{ opacity: 0 }}

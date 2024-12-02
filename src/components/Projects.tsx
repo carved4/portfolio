@@ -4,18 +4,18 @@ import { FiGithub, FiExternalLink } from 'react-icons/fi'
 
 const projects = [
   {
-    title: 'Project One',
-    description: 'A full-stack application built with Next.js and TypeScript.',
+    title: 'StudyFlow',
+    description: 'A comprehensive study platform built with Next.js, TypeScript, and Tailwind CSS. Features include task management, progress tracking, and collaborative study tools.',
     image: '/project1.jpg',
-    tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
-    github: '#',
-    live: '#',
+    tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'PostgreSQL'],
+    github: 'https://github.com/carved4/studyflow',
+    live: 'https://studyflow-six.vercel.app',
   },
   {
-    title: 'Project Two',
-    description: 'A modern web application with real-time features.',
+    title: 'More Coming Soon',
+    description: 'Currently developing exciting new projects. Stay tuned for updates!',
     image: '/project2.jpg',
-    tech: ['React', 'Node.js', 'Socket.IO'],
+    tech: ['Next.js', 'React', 'TypeScript', 'Node.js', 'and more...'],
     github: '#',
     live: '#',
   },
