@@ -5,22 +5,22 @@ const socialLinks = [
   {
     name: 'Email',
     icon: FiMail,
-    href: 'mailto:your.email@example.com',
+    href: 'mailto:owen@owens.lol',
   },
   {
     name: 'GitHub',
     icon: FiGithub,
-    href: 'https://github.com/yourusername',
+    href: 'https://github.com/carved4',
   },
   {
     name: 'LinkedIn',
     icon: FiLinkedin,
-    href: 'https://linkedin.com/in/yourusername',
+    href: 'https://linkedin.com/in/owen-smith-458a01200/',
   },
   {
     name: 'Twitter',
     icon: FiTwitter,
-    href: 'https://twitter.com/yourusername',
+    href: 'https://twitter.com/owengsmt',
   },
 ]
 
