@@ -6,13 +6,7 @@
       "use": "@vercel/next"
     }
   ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/"
-    }
-  ],
   "rewrites": [
-    { "source": "/", "destination": "/" }
+    { "source": "/(.*)", "destination": "/" }
   ]
 }
