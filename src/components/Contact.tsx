@@ -5,7 +5,7 @@ const socialLinks = [
   {
     name: 'Email',
     icon: FiMail,
-    href: 'mailto:owen@owens.lol',
+    href: 'mailto:owengilsm@gmail.com',
   },
   {
     name: 'GitHub',
