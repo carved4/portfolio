@@ -15,7 +15,7 @@ const socialLinks = [
   {
     name: 'LinkedIn',
     icon: FiLinkedin,
-    href: 'https://linkedin.com/in/owen-smith-458a01200/',
+    href: 'https://linkedin.com/in/owengsmt',
   },
   {
     name: 'Twitter',
