@@ -12,12 +12,12 @@ const projects = [
     live: 'https://studyflow-six.vercel.app',
   },
   {
-    title: 'More Coming Soon',
-    description: 'Currently developing exciting new projects. Stay tuned for updates!',
+    title: 'Nutrition Helper',
+    description: 'A nutrition tracking application that helps users monitor their daily nutritional intake and maintain a healthy diet.',
     image: '/project2.jpg',
-    tech: ['Next.js', 'React', 'TypeScript', 'Node.js', 'and more...'],
-    github: '#',
-    live: '#',
+    tech: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],
+    github: 'https://github.com/carved4/nutrihelper',
+    live: 'https://nutritionhelper.vercel.app',
   },
   // Add more projects as needed
 ]
