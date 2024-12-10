@@ -17,7 +17,7 @@ const projects = [
     image: '/project2.jpg',
     tech: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],
     github: 'https://github.com/carved4/nutrihelper',
-    live: 'https://nutritionhelper.vercel.app',
+    live: 'https://nutrihelp.lol',
   },
   // Add more projects as needed
 ]
