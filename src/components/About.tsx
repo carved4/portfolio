@@ -28,7 +28,7 @@ export default function About() {
           </p>
           <p className="text-dimWhite text-lg">
             When I'm not coding, you can find me exploring new technologies,
-            contributing to open-source projects, playing with my cat, or playing video games.
+            contributing to open-source projects, learning more about LLMs, or playing with my cat.
           </p>
         </motion.div>
       </div>

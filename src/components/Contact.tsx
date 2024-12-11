@@ -60,15 +60,21 @@ export default function Contact() {
           className="flex-center gap-8"
         >
           {socialLinks.map((link, index) => (
-            <a
+            <motion.a
               key={link.name}
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
               className="text-dimWhite hover:text-primary transition-colors"
+              whileHover={{ 
+                scale: 1.2, 
+                rotate: 360,
+                transition: { duration: 0.3 }
+              }}
+              whileTap={{ scale: 0.95 }}
             >
               <link.icon className="w-8 h-8" />
-            </a>
+            </motion.a>
           ))}
         </motion.div>
       </div>
