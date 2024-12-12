@@ -35,12 +35,17 @@ export default function Hero() {
             delay: 200
           })
           .add({
-            targets: buttonsRef.current?.children,
+            targets: buttonsRef.current,
             translateY: [50, 0],
             opacity: [0, 1],
-            delay: anime.stagger(200),
+            begin: () => {
+              if (buttonsRef.current) {
+                buttonsRef.current.style.display = 'flex';
+              }
+            },
+            delay: 200,
             offset: '-=600'
-          })
+          }, '+=400')
 
         // Fade out cursor
         if (cursorRef.current) {
@@ -103,7 +108,7 @@ export default function Hero() {
           </p>
           <div 
             ref={buttonsRef}
-            className="flex-center gap-4"
+            className="flex-center gap-4 opacity-0 hidden"
           >
             <motion.a
               href="#projects"
