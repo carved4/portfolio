@@ -1,124 +1,114 @@
-import { motion, useAnimationControls } from 'framer-motion'
-import { useEffect } from 'react'
+import { motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import anime from 'animejs'
 
 export default function Hero() {
-  const controls = useAnimationControls()
-  const cursorControls = useAnimationControls()
-  const subtitleControls = useAnimationControls()
-  const buttonsControls = useAnimationControls()
-  const text = "Hi, I'm Owen Smith"
-  
+  const [typedText, setTypedText] = useState('')
+  const nameRef = useRef<HTMLSpanElement>(null)
+  const subtitleRef = useRef<HTMLParagraphElement>(null)
+  const buttonsRef = useRef<HTMLDivElement>(null)
+  const cursorRef = useRef<HTMLSpanElement>(null)
+
   useEffect(() => {
-    const animateText = async () => {
-      // Initial fade in
-      await controls.start({
-        opacity: 1,
-        transition: { duration: 0.3 }
-      })
-      
-      // Type out text
-      for (let i = 0; i <= text.length; i++) {
-        await controls.start({
-          width: `${(i / text.length) * 100}%`,
-          transition: { duration: 0.05 }
+    const text = "Hi, I'm Owen Smith"
+    let currentIndex = 0
+
+    // Typing effect with Anime.js cursor animation
+    const typeText = () => {
+      if (currentIndex <= text.length) {
+        setTypedText(text.slice(0, currentIndex))
+        currentIndex++
+
+        setTimeout(typeText, 100)
+      } else {
+        // After typing complete, start the reveal animation
+        const textAnimation = anime.timeline({
+          easing: 'easeOutExpo',
+          duration: 1200
         })
+
+        textAnimation
+          .add({
+            targets: subtitleRef.current,
+            translateY: [50, 0],
+            opacity: [0, 1],
+            delay: 200
+          })
+          .add({
+            targets: buttonsRef.current?.children,
+            translateY: [50, 0],
+            opacity: [0, 1],
+            delay: anime.stagger(200),
+            offset: '-=600'
+          })
+
+        // Fade out cursor
+        if (cursorRef.current) {
+          anime({
+            targets: cursorRef.current,
+            opacity: [1, 0],
+            scaleX: [1, 0],
+            duration: 500,
+            easing: 'easeInOutQuad'
+          })
+        }
       }
-
-      // Animate cursor after typing
-      await cursorControls.start({
-        scaleY: [1, 1, 1, 0],
-        x: [0, 10, 20, 30],
-        opacity: [1, 1, 0.5, 0],
-        transition: { 
-          duration: 0.5,
-          times: [0, 0.5, 0.7, 1],
-          ease: "easeInOut"
-        }
-      })
-
-      // Fade in subtitle with a smooth slide
-      await subtitleControls.start({
-        opacity: 1,
-        y: 0,
-        transition: {
-          duration: 0.4,
-          ease: "circOut"
-        }
-      })
-
-      // Fade in buttons with a staggered effect
-      await buttonsControls.start({
-        opacity: 1,
-        y: 0,
-        transition: {
-          duration: 0.4,
-          ease: "easeOut"
-        }
-      })
     }
-    
-    animateText()
-  }, [controls, cursorControls, subtitleControls, buttonsControls, text])
+
+    // Start typing
+    typeText()
+  }, [])
+
+  const renderTypedText = () => {
+    const prefix = "Hi, I'm "
+    const name = "Owen Smith"
+    const currentText = typedText
+
+    if (currentText.length <= prefix.length) {
+      return currentText
+    }
+
+    const nameTyped = currentText.slice(prefix.length)
+    return (
+      <>
+        {prefix}
+        <span className="heading-gradient">{nameTyped}</span>
+      </>
+    )
+  }
 
   return (
     <section id="home" className="section-padding pt-32">
       <div className="mx-auto max-w-7xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          className="text-center"
-        >
+        <div className="text-center">
           <h1 className="text-4xl sm:text-6xl font-bold mb-6 relative">
-            <motion.div
-              initial={{ opacity: 0, width: "0%" }}
-              animate={controls}
-              className="overflow-hidden whitespace-nowrap inline-block"
+            <span 
+              ref={nameRef} 
+              className="inline-block"
             >
-              Hi, I'm <span className="heading-gradient">Owen Smith</span>
-            </motion.div>
-            <motion.div
-              initial={{ 
-                opacity: 1,
-                scaleY: 1,
-                x: 0,
-                originX: 0
-              }}
-              animate={cursorControls}
-              className="absolute -right-[3px] top-0 h-full w-[3px] bg-gradient-to-b from-primary via-primary to-purple-600"
-            >
-              <motion.div 
-                className="absolute inset-0 bg-primary/30"
-                animate={{ 
-                  opacity: [0.3, 0.6, 0.3],
-                }}
-                transition={{
-                  duration: 1,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-              />
-            </motion.div>
+              {renderTypedText()}
+              <span 
+                ref={cursorRef}
+                className="inline-block w-[2px] h-[1em] bg-primary ml-1"
+              >
+                |
+              </span>
+            </span>
           </h1>
-          <motion.p 
-            className="text-xl sm:text-2xl text-dimWhite mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={subtitleControls}
+          <p 
+            ref={subtitleRef}
+            className="text-xl sm:text-2xl text-dimWhite mb-8 opacity-0"
           >
             Computer Science Student | Creating Beautiful Digital Experiences
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={buttonsControls}
+          </p>
+          <div 
+            ref={buttonsRef}
             className="flex-center gap-4"
           >
             <motion.a
               href="#projects"
               className="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-medium transition-colors"
-              whileHover={{ 
-                scale: 1.05,
-                transition: { duration: 0.2 }
-              }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               View My Work
@@ -126,16 +116,13 @@ export default function Hero() {
             <motion.a
               href="#contact"
               className="border border-primary text-primary hover:bg-primary/10 px-6 py-3 rounded-lg font-medium transition-colors"
-              whileHover={{ 
-                scale: 1.05,
-                transition: { duration: 0.2 }
-              }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               Contact Me
             </motion.a>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   )
