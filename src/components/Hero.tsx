@@ -213,6 +213,50 @@ export default function Hero() {
               Get In Touch
             </motion.a>
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.5 }}
+            className="mt-12 max-w-md mx-auto"
+          >
+            <motion.div
+              className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 p-6 rounded-2xl backdrop-blur-sm border border-gray-700/50 hover:border-primary/50 transition-colors"
+              whileHover={{ 
+                scale: 1.02,
+                transition: { type: "spring", stiffness: 300, damping: 20 }
+              }}
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">My Resume</h3>
+                  <p className="text-gray-400 text-sm">PDF • Updated 2024</p>
+                </div>
+                <motion.a
+                  href="/resume (1).pdf"
+                  download
+                  className="p-3 rounded-xl bg-primary/20 hover:bg-primary/30 transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+                    />
+                  </svg>
+                </motion.a>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>
