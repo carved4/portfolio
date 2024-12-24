@@ -23,12 +23,12 @@ export default function About() {
           className="max-w-3xl mx-auto text-center"
         >
           <p className="text-dimWhite text-lg mb-6">
-            I am a third year student at Adrian College completing my major in Computer Science and my minor in Cloud Application Development. I'm a passionate developer with a keen eye for creating elegant solutions to complex problems. With expertise in modern web technologies, I strive
+            I am a third year student at Adrian College completing a major in Computer Science and a minor in Cloud Application Development. I'm a passionate developer with a keen eye for creating elegant solutions to complex problems. With expertise in modern web technologies, I strive
             to build applications that not only provide real world functionality but also an exceptional user experience.
           </p>
           <p className="text-dimWhite text-lg">
             When I'm not coding, you can find me exploring new technologies,
-            contributing to open-source projects, learning more about LLMs, or playing with my cat.
+            contributing to my open-source projects, learning more about LLMs, or playing with my cat.
           </p>
         </motion.div>
       </div>
