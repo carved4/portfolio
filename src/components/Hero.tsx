@@ -15,8 +15,8 @@ export default function Hero() {
     }
 
     const timeline = anime.timeline({
-      easing: 'cubicBezier(.5, .05, .1, .3)',
-      duration: 800
+      easing: 'easeOutQuint',
+      duration: 600
     })
 
     // Slide in and reveal letters animation
@@ -26,43 +26,65 @@ export default function Hero() {
         targets: '.hero-bg-gradient',
         scale: [0, 1],
         opacity: [0, 1],
-        duration: 1000,
-        easing: 'easeInOutQuart'
+        duration: 800,
+        easing: 'easeOutQuint',
+        begin: () => {
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            timeline.pause()
+          }
+        }
       })
       .add({
         targets: letters,
-        translateY: [-100, 0],
+        translateY: [50, 0],
         opacity: [0, 1],
-        delay: anime.stagger(50),
-        duration: 800,
-        easing: 'easeOutElastic(1, .5)'
-      }, '-=400')
+        delay: anime.stagger(30, {from: 'center'}),
+        duration: 600,
+        easing: 'easeOutQuint'
+      }, '-=300')
       .add({
         targets: subtitleRef.current,
-        clipPath: ['inset(0 100% 0 0)', 'inset(0 0% 0 0)'],
+        translateY: [20, 0],
         opacity: [0, 1],
-        duration: 800,
-        easing: 'easeInOutQuint'
-      }, '-=400')
+        duration: 600,
+        easing: 'easeOutQuint'
+      }, '-=300')
       .add({
         targets: buttonsRef.current?.children,
         translateY: [20, 0],
         opacity: [0, 1],
-        delay: anime.stagger(100),
-        duration: 600,
-        easing: 'easeOutCubic'
-      }, '-=400')
+        delay: anime.stagger(50),
+        duration: 400,
+        easing: 'easeOutQuint'
+      }, '-=300')
 
-    // Continuous subtle animations
-    anime({
+    // Continuous subtle animations - optimized for mobile
+    const bgAnimation = anime({
       targets: '.hero-bg-gradient',
-      scale: [1, 1.1],
-      opacity: [0.8, 1],
-      duration: 3000,
+      scale: [1, 1.05],
+      opacity: [0.9, 1],
+      duration: 4000,
       direction: 'alternate',
       loop: true,
-      easing: 'easeInOutQuad'
+      easing: 'easeInOutQuad',
+      update: function(anim) {
+        // Pause animation when out of viewport
+        if (containerRef.current) {
+          const rect = containerRef.current.getBoundingClientRect()
+          if (rect.bottom < 0 || rect.top > window.innerHeight) {
+            anim.pause()
+          } else {
+            anim.play()
+          }
+        }
+      }
     })
+
+    // Cleanup function
+    return () => {
+      bgAnimation.pause()
+      timeline.pause()
+    }
   }, [])
 
   // Split text into individual spans for letter animation
@@ -92,7 +114,10 @@ export default function Hero() {
     >
       <div className="absolute inset-0 w-full h-full"></div>
 
-      <div className="hero-bg-gradient absolute top-0 left-1/2 -translate-x-1/2 w-[150%] h-[150%] bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-3xl -z-10 origin-center"></div>
+      <div 
+        className="hero-bg-gradient absolute top-0 left-1/2 -translate-x-1/2 w-[150%] h-[150%] bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-3xl -z-10 origin-center transform-gpu"
+        style={{ willChange: 'transform, opacity' }}
+      ></div>
       
       <div className="mx-auto max-w-7xl relative z-10">
         <div className="text-center">
