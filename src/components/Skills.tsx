@@ -1,3 +1,5 @@
+'use client';
+
 import { motion } from 'framer-motion'
 import { 
   SiReact, 
@@ -9,6 +11,7 @@ import {
   SiGit,
   SiDocker 
 } from 'react-icons/si'
+import { useTheme } from '../context/ThemeContext'
 
 const skills = [
   { name: 'React', icon: SiReact },
@@ -22,8 +25,10 @@ const skills = [
 ]
 
 export default function Skills() {
+  const { theme } = useTheme()
+
   return (
-    <section id="skills" className="section-padding bg-black/30">
+    <section id="skills" className="section-padding bg-background">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -32,7 +37,7 @@ export default function Skills() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Skills</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-text">Skills</h2>
           <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
         </motion.div>
 
@@ -47,7 +52,7 @@ export default function Skills() {
               className="flex flex-col items-center p-6 rounded-lg bg-secondary/50 hover:bg-primary/10 transition-colors"
             >
               <skill.icon className="w-12 h-12 text-primary mb-4" />
-              <h3 className="text-lg font-medium">{skill.name}</h3>
+              <h3 className="text-lg font-medium text-text">{skill.name}</h3>
             </motion.div>
           ))}
         </div>

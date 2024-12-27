@@ -1,9 +1,12 @@
+'use client';
+
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import { FiGithub, FiExternalLink } from 'react-icons/fi'
 import { BsBook, BsFileEarmarkArrowUp } from 'react-icons/bs'
 import { IoNutritionOutline } from 'react-icons/io5'
 import { useRef } from 'react'
+import { useTheme } from '../context/ThemeContext'
 
 const projects = [
   {
@@ -41,9 +44,10 @@ export default function Projects() {
     target: containerRef,
     offset: ["start end", "end start"]
   })
+  const { theme } = useTheme()
 
   return (
-    <section id="projects" className="section-padding" ref={containerRef}>
+    <section id="projects" className="section-padding bg-background" ref={containerRef}>
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -56,7 +60,7 @@ export default function Projects() {
           className="text-center mb-12"
         >
           <motion.h2 
-            className="text-3xl sm:text-4xl font-bold mb-4"
+            className="text-3xl sm:text-4xl font-bold mb-4 text-text"
             whileInView={{ 
               opacity: [0, 1],
               y: [20, 0],
@@ -142,14 +146,14 @@ export default function Projects() {
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-3">
                   {project.icon && <project.icon className="w-6 h-6 text-primary" />}
-                  <h3 className="text-xl font-semibold">{project.title}</h3>
+                  <h3 className="text-xl font-semibold text-text">{project.title}</h3>
                 </div>
-                <p className="text-gray-300 mb-4">{project.description}</p>
+                <p className="text-text/80 mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 bg-primary/20 rounded-full text-sm font-medium hover:bg-primary/30 transition-colors"
+                      className="px-3 py-1 text-sm bg-secondary/80 text-text/90 rounded-full"
                     >
                       {tech}
                     </span>

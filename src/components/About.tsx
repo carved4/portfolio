@@ -1,8 +1,13 @@
+'use client';
+
 import { motion } from 'framer-motion'
+import { useTheme } from '../context/ThemeContext'
 
 export default function About() {
+  const { theme } = useTheme()
+  
   return (
-    <section id="about" className="section-padding">
+    <section id="about" className="section-padding bg-background">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -11,7 +16,7 @@ export default function About() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">About Me</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-text">About Me</h2>
           <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
         </motion.div>
         
@@ -22,13 +27,13 @@ export default function About() {
           viewport={{ once: true }}
           className="max-w-3xl mx-auto text-center"
         >
-          <p className="text-dimWhite text-lg mb-6">
-            I am a third year student at Adrian College completing a major in Computer Science and a minor in Cloud Application Development. I'm a passionate developer with a keen eye for creating elegant solutions to complex problems. With expertise in modern web technologies, I strive
-            to build applications that not only provide real world functionality but also an exceptional user experience.
+          <p className="text-text/80 text-lg mb-6">
+            I'm a third year student at Adrian College, majoring in Computer Science and minoring in Cloud Application Development. As a passionate developer, I'm driven to create innovative solutions to complex problems. With a strong foundation in modern web technologies, I aim to craft applications that deliver both real-world functionality and an exceptional user experience.
           </p>
-          <p className="text-dimWhite text-lg">
-            When I'm not coding, you can find me exploring new technologies,
-            contributing to my open-source projects, learning more about LLMs, or playing with my cat.
+          <p className="text-text/80 text-lg">
+            When I'm not coding, you can find me diving into emerging technologies,
+            contributing to open-source projects, delving deeper into AI and machine learning,
+            or enjoying quality time with my girlfriend and cat.
           </p>
         </motion.div>
       </div>

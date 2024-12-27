@@ -1,8 +1,11 @@
+'use client';
+
 import { motion } from 'framer-motion'
 import { FiMail, FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi'
 import { useState } from 'react'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
 import emailjs from '@emailjs/browser'
+import { useTheme } from '../context/ThemeContext'
 
 const socialLinks = [
   {
@@ -32,6 +35,7 @@ export default function Contact() {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const { theme } = useTheme()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -66,7 +70,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="section-padding bg-black/30">
+    <section id="contact" className="section-padding bg-background">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -75,7 +79,7 @@ export default function Contact() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Get In Touch</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-text">Get In Touch</h2>
           <div className="w-20 h-1 bg-primary mx-auto rounded-full"></div>
         </motion.div>
 
@@ -86,7 +90,7 @@ export default function Contact() {
           viewport={{ once: true }}
           className="max-w-3xl mx-auto text-center mb-12"
         >
-          <p className="text-dimWhite text-lg">
+          <p className="text-text/80 text-lg">
             I'm currently open for employment opportunities. Whether you have a question or
             just want to say hi, feel free to reach out!
           </p>
@@ -109,7 +113,7 @@ export default function Contact() {
                   placeholder="Your Name"
                   value={formState.name}
                   onChange={handleInputChange}
-                  className="w-full p-3 bg-secondary/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-white placeholder-gray-400"
+                  className="w-full p-3 bg-secondary/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-text placeholder-text/50"
                   required
                   disabled={isSubmitting}
                 />
@@ -121,7 +125,7 @@ export default function Contact() {
                   placeholder="Your Email"
                   value={formState.email}
                   onChange={handleInputChange}
-                  className="w-full p-3 bg-secondary/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-white placeholder-gray-400"
+                  className="w-full p-3 bg-secondary/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-text placeholder-text/50"
                   required
                   disabled={isSubmitting}
                 />
@@ -132,7 +136,7 @@ export default function Contact() {
                   placeholder="Your Message"
                   value={formState.message}
                   onChange={handleInputChange}
-                  className="w-full p-3 bg-secondary/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-white placeholder-gray-400 h-32 resize-none"
+                  className="w-full p-3 bg-secondary/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-text placeholder-text/50 h-32 resize-none"
                   required
                   disabled={isSubmitting}
                 />
@@ -149,78 +153,61 @@ export default function Contact() {
                     : submitStatus === 'error'
                     ? 'bg-red-500 hover:bg-red-600'
                     : 'bg-primary hover:bg-primary/90'
-                } text-white`}
+                } text-text`}
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
                   <span className="flex items-center justify-center">
-                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
                     </svg>
                     Sending...
                   </span>
                 ) : submitStatus === 'success' ? (
                   'Message Sent!'
                 ) : submitStatus === 'error' ? (
-                  'Failed to Send - Try Again'
+                  'Error Sending Message'
                 ) : (
                   'Send Message'
                 )}
               </motion.button>
-              {submitStatus === 'success' && (
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-green-500 text-sm text-center mt-2"
-                >
-                  Thanks for reaching out! I'll get back to you soon.
-                </motion.p>
-              )}
-              {submitStatus === 'error' && (
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-red-500 text-sm text-center mt-2"
-                >
-                  Something went wrong. Please try again or email me directly.
-                </motion.p>
-              )}
             </form>
           </motion.div>
 
           {/* Social Links */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="flex flex-col justify-center items-center gap-8"
+            className="space-y-8"
           >
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold mb-4">Connect With Me</h3>
-              <p className="text-dimWhite">Find me on these platforms</p>
-            </div>
-            <div className="grid grid-cols-2 gap-8">
-              {socialLinks.map((link, index) => (
-                <motion.a
-                  key={link.name}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-dimWhite hover:text-primary transition-colors flex flex-col items-center gap-2"
-                  whileHover={{ 
-                    scale: 1.2, 
-                    rotate: 360,
-                    transition: { duration: 0.3 }
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <link.icon className="w-8 h-8" />
-                  <span className="text-sm">{link.name}</span>
-                </motion.a>
-              ))}
-            </div>
+            {socialLinks.map((link) => (
+              <motion.a
+                key={link.name}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center p-4 bg-secondary/50 rounded-lg hover:bg-primary/10 transition-colors group"
+                whileHover={{ scale: 1.02, x: 10 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <link.icon className="w-6 h-6 text-primary mr-4" />
+                <span className="text-text font-medium">{link.name}</span>
+              </motion.a>
+            ))}
           </motion.div>
         </div>
       </div>

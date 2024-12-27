@@ -9,8 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#0070f3',
-        secondary: '#00040f',
+        primary: 'var(--primary)',
+        secondary: 'var(--secondary)',
+        background: 'var(--background)',
+        text: 'var(--text)',
         dimWhite: "rgba(255, 255, 255, 0.7)",
       },
       fontFamily: {

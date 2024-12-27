@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
+import { ThemeProvider } from '../context/ThemeContext'
 import './globals.css'
 
 const poppins = Poppins({
@@ -9,8 +10,8 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'Owen Smith | Portfolio',
-  description: 'A modern developer portfolio showcasing my skills and projects',
+  title: 'Owen Smith Portfolio',
+  description: 'Portfolio website showcasing my work and skills',
   icons: {
     icon: [
       {
@@ -46,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="dark scroll-smooth">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
         <meta name="theme-color" content="#000000" />
@@ -54,7 +55,9 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
       <body className={`${poppins.variable} font-poppins bg-secondary text-white antialiased`}>
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )
