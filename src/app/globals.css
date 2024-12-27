@@ -7,6 +7,7 @@
   --secondary: #393E46;
   --background: #222831;
   --text: #EEEEEE;
+  --text-dark: #EEEEEE;
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 0, 4, 15;
   --background-end-rgb: 0, 0, 0;
@@ -14,9 +15,10 @@
 
 .light {
   --primary: #00ADB5;
-  --secondary: #E8E8E8;
+  --secondary: #393E46;
   --background: #FFFFFF;
-  --text: #222831;
+  --text: #000000;
+  --text-dark: #000000;
 }
 
 .dark {
@@ -24,6 +26,7 @@
   --secondary: #393E46;
   --background: #000000;
   --text: #EEEEEE;
+  --text-dark: #EEEEEE;
 }
 
 /* Ensure smooth scrolling and proper viewport height on mobile */

@@ -90,7 +90,7 @@ export default function Contact() {
           viewport={{ once: true }}
           className="max-w-3xl mx-auto text-center mb-12"
         >
-          <p className="text-text/80 text-lg">
+          <p className="text-text text-lg">
             I'm currently open for employment opportunities. Whether you have a question or
             just want to say hi, feel free to reach out!
           </p>

@@ -112,7 +112,7 @@ export default function Hero() {
   return (
     <section 
       id="home" 
-      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background"
+      className="min-h-[90vh] flex items-center justify-center relative overflow-hidden bg-background"
       ref={containerRef}
       style={{ opacity: 0 }}
     >
@@ -142,34 +142,26 @@ export default function Hero() {
 
           <div 
             ref={buttonsRef}
-            className="flex justify-center gap-6"
+            className="flex flex-wrap justify-center gap-4"
           >
             <motion.a
               href="#projects"
-              className="px-6 py-3 rounded-full bg-primary text-text font-semibold hover:bg-primary/90 transition-colors"
+              className="px-8 py-3 rounded-full bg-gradient-to-r from-primary to-primary/90 text-text font-medium tracking-wide shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
               initial={{ scale: 1 }}
               whileHover={{ 
-                scale: 1.03,
-                y: -4,
+                scale: 1.02,
                 transition: {
-                  scale: {
-                    type: "spring",
-                    stiffness: 260,
-                    damping: 20
-                  },
-                  y: {
-                    type: "spring",
-                    stiffness: 260,
-                    damping: 20
-                  }
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 10
                 }
               }}
               whileTap={{ 
                 scale: 0.98,
                 transition: {
                   type: "spring",
-                  stiffness: 300,
-                  damping: 15
+                  stiffness: 400,
+                  damping: 10
                 }
               }}
             >
@@ -177,34 +169,50 @@ export default function Hero() {
             </motion.a>
             <motion.a
               href="#contact"
-              className="px-6 py-3 rounded-full bg-secondary text-text font-semibold hover:bg-secondary/90 transition-colors"
+              className="px-8 py-3 rounded-full bg-gradient-to-r from-secondary to-secondary/90 text-text font-medium tracking-wide shadow-lg shadow-secondary/20 hover:shadow-xl hover:shadow-secondary/30 transition-all duration-300"
               initial={{ scale: 1 }}
               whileHover={{ 
-                scale: 1.03,
-                y: -4,
+                scale: 1.02,
                 transition: {
-                  scale: {
-                    type: "spring",
-                    stiffness: 260,
-                    damping: 20
-                  },
-                  y: {
-                    type: "spring",
-                    stiffness: 260,
-                    damping: 20
-                  }
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 10
                 }
               }}
               whileTap={{ 
                 scale: 0.98,
                 transition: {
                   type: "spring",
-                  stiffness: 300,
-                  damping: 15
+                  stiffness: 400,
+                  damping: 10
                 }
               }}
             >
               Get in Touch
+            </motion.a>
+            <motion.a
+              href="/resume (1).pdf"
+              download
+              className="px-8 py-3 rounded-full bg-gradient-to-r from-accent to-accent/90 text-text font-medium tracking-wide shadow-lg shadow-accent/20 hover:shadow-xl hover:shadow-accent/30 transition-all duration-300"
+              initial={{ scale: 1 }}
+              whileHover={{ 
+                scale: 1.02,
+                transition: {
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 10
+                }
+              }}
+              whileTap={{ 
+                scale: 0.98,
+                transition: {
+                  type: "spring",
+                  stiffness: 400,
+                  damping: 10
+                }
+              }}
+            >
+              Download Resume
             </motion.a>
           </div>
         </div>

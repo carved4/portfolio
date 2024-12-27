@@ -27,10 +27,10 @@ export default function About() {
           viewport={{ once: true }}
           className="max-w-3xl mx-auto text-center"
         >
-          <p className="text-text/80 text-lg mb-6">
+          <p className="text-text text-lg mb-6">
             I'm a third year student at Adrian College, majoring in Computer Science and minoring in Cloud Application Development. As a passionate developer, I'm driven to create innovative solutions to complex problems. With a strong foundation in modern web technologies, I aim to craft applications that deliver both real-world functionality and an exceptional user experience.
           </p>
-          <p className="text-text/80 text-lg">
+          <p className="text-text text-lg">
             When I'm not coding, you can find me diving into emerging technologies,
             contributing to open-source projects, delving deeper into AI and machine learning,
             or enjoying quality time with my girlfriend and cat.

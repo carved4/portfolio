@@ -114,7 +114,8 @@ export default function Projects() {
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover"
+                    className="object-cover object-center"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </motion.div>
                 <motion.div 
@@ -148,12 +149,12 @@ export default function Projects() {
                   {project.icon && <project.icon className="w-6 h-6 text-primary" />}
                   <h3 className="text-xl font-semibold text-text">{project.title}</h3>
                 </div>
-                <p className="text-text/80 mb-4">{project.description}</p>
+                <p className="text-text mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 text-sm bg-secondary/80 text-text/90 rounded-full"
+                      className="px-3 py-1 text-sm bg-secondary/80 text-text rounded-full"
                     >
                       {tech}
                     </span>
