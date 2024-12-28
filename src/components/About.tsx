@@ -7,7 +7,7 @@ export default function About() {
   const { theme } = useTheme()
   
   return (
-    <section id="about" className="section-padding bg-background">
+    <section id="about" className="pt-2 pb-4 bg-background">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -35,6 +35,24 @@ export default function About() {
             contributing to open-source projects, delving deeper into AI and machine learning,
             or enjoying quality time with my girlfriend and cat.
           </p>
+          <motion.button
+            whileHover={{ scale: 1.06 }}
+            whileTap={{ scale: 0.96 }}
+            className="mt-12 px-8 py-4 rounded-lg 
+              bg-gradient-to-br from-teal-500 to-purple-600 
+              shadow-md hover:shadow-xl 
+              text-white font-bold tracking-wide 
+              focus:outline-none focus:ring-4 focus:ring-teal-300 
+              transition-transform duration-300"
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            <p className="text-xl leading-snug">
+              Interested in a portfolio website like this one?
+              <span className="block text-base mt-2 font-medium opacity-90">
+                Contact me below for commission inquiries!
+              </span>
+            </p>
+          </motion.button>
         </motion.div>
       </div>
     </section>
