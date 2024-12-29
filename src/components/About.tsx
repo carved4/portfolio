@@ -32,7 +32,7 @@ export default function About() {
           </p>
           <p className="text-text text-lg">
             When I'm not coding, you can find me diving into emerging technologies,
-            contributing to open-source projects, delving deeper into AI and machine learning,
+            contributing to open-source projects, learning more about LLMs and machine learning,
             or enjoying quality time with my girlfriend and cat.
           </p>
           <motion.button
