@@ -1,11 +1,10 @@
 'use client';
-
+import { SiLeetcode } from 'react-icons/si'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import { FiGithub, FiExternalLink } from 'react-icons/fi'
 import { BsBook, BsFileEarmarkArrowUp } from 'react-icons/bs'
 import { IoNutritionOutline } from 'react-icons/io5'
-import { SiLeetcode } from 'react-icons/si'
 import { useRef } from 'react'
 import { useTheme } from '../context/ThemeContext'
 
@@ -44,7 +43,7 @@ const projects = [
     tech: ['Python', 'GraphQL', 'HTML', 'Vercel'],
     github: 'https://github.com/carved4/leethelper',
     live: 'https://leethelp.vercel.app',
-    icon: SiLeetcode,
+    icon: SiLeetcode,  // Changed from BsBook to SiLeetcode
   },
 ]
 

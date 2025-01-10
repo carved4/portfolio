@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useEffect, useRef } from 'react'
 import anime from 'animejs'
 import { useTheme } from '../context/ThemeContext'
+import { useInView } from 'framer-motion'
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -11,112 +12,104 @@ export default function Hero() {
   const subtitleRef = useRef<HTMLParagraphElement>(null)
   const buttonsRef = useRef<HTMLDivElement>(null)
   const { theme } = useTheme()
+  const isInView = useInView(containerRef)
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!isInView) return
 
-    if (prefersReducedMotion) {
-      if (containerRef.current) containerRef.current.style.opacity = '1'
-      return
+    // Initial setup
+    if (containerRef.current) {
+      containerRef.current.style.opacity = '1'
     }
 
-    // Enhanced initial animation timeline
-    const timeline = anime.timeline({
-      easing: 'cubicBezier(.175, .885, .32, 1.275)', // Enhanced easing
+    // Main animation timeline
+    const mainTimeline = anime.timeline({
+      easing: 'cubicBezier(0.645, 0.045, 0.355, 1.000)', // Improved easing
       duration: 800
     })
 
-    // Refined gradient animation
-    timeline
+    // Background animation
+    mainTimeline
       .add({
         targets: '.hero-bg-gradient',
-        scale: [1.5, 1],
-        opacity: [0, 0.9],
+        scale: [0.8, 1],
+        opacity: [0, 0.8],
         duration: 1200,
-        easing: 'easeOutExpo',
+        easing: 'cubicBezier(0.25, 0.46, 0.45, 0.94)',
+        begin: () => {
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            mainTimeline.pause()
+          }
+        }
       })
+      // Name animation with improved staggering
       .add({
-        targets: '.greeting-text',
+        targets: '.letter',
+        translateY: [60, 0],
         opacity: [0, 1],
-        translateY: [20, 0],
-        duration: 800,
-        easing: 'easeOutQuint',
-      }, '-=400')
-      .add({
-        targets: '.name-letter',
-        opacity: [0, 1],
-        translateY: [40, 0],
-        rotateX: [90, 0],
+        rotateX: [90, 0], // Added 3D rotation
         delay: anime.stagger(40, { from: 'center' }),
         duration: 800,
-        easing: 'easeOutExpo',
-      }, '-=400')
+        easing: 'cubicBezier(0.215, 0.61, 0.355, 1)'
+      }, '-=800')
+      // Subtitle animation
       .add({
         targets: subtitleRef.current,
-        clipPath: ['inset(0 100% 0 0)', 'inset(0 0% 0 0)'],
-        opacity: [0, 1],
-        duration: 800,
-        easing: 'easeOutQuint',
-      }, '-=600')
-      .add({
-        targets: buttonsRef.current?.children,
         translateY: [30, 0],
         opacity: [0, 1],
-        scale: [0.9, 1],
-        delay: anime.stagger(100),
-        duration: 600,
-        easing: 'easeOutExpo',
-      }, '-=400')
+        duration: 800,
+        easing: 'cubicBezier(0.215, 0.61, 0.355, 1)'
+      }, '-=600')
+      // Buttons animation with improved staggering
+      .add({
+        targets: buttonsRef.current,
+        opacity: [0, 1],
+        duration: 400,
+        easing: 'cubicBezier(0.4, 0, 0.2, 1)'
+      }, '-=500')
+      .add({
+        targets: buttonsRef.current?.children,
+        translateY: [40, 0],
+        scale: [0.95, 1],
+        delay: anime.stagger(150),
+        duration: 800,
+        easing: 'cubicBezier(0.34, 1.56, 0.64, 1)'
+      }, '-=200')
 
     // Enhanced background animation
     const bgAnimation = anime({
       targets: '.hero-bg-gradient',
-      scale: [1, 1.1],
-      opacity: [0.9, 1],
-      duration: 8000,
+      scale: [1, 1.05],
+      opacity: [0.8, 0.9],
+      duration: 3000,
       direction: 'alternate',
       loop: true,
-      easing: 'easeInOutQuad',
+      easing: 'cubicBezier(0.445, 0.05, 0.55, 0.95)',
       update: function(anim) {
-        if (!containerRef.current) return
-        
-        const rect = containerRef.current.getBoundingClientRect()
-        const isVisible = rect.bottom > 0 && rect.top < window.innerHeight
-        
-        if (!isVisible && !anim.paused) {
+        if (!isInView) {
           anim.pause()
-        } else if (isVisible && anim.paused) {
+        } else {
           anim.play()
         }
       }
     })
 
-    // Show container
-    if (containerRef.current) {
-      containerRef.current.style.opacity = '1'
-    }
-
     return () => {
+      mainTimeline.pause()
       bgAnimation.pause()
-      timeline.pause()
     }
-  }, [])
+  }, [isInView])
 
+  // Split text into individual spans for letter animation
   const renderAnimatedName = () => {
     const name = "Owen Smith"
     return (
       <>
-        <span className="greeting-text mr-2 text-text opacity-0">Hi, I'm</span>
+        <span className="mr-2 text-text">Hi, I'm</span>
         {name.split('').map((letter, index) => (
           <span 
             key={index} 
-            className={`name-letter inline-block heading-gradient opacity-0 ${
-              letter === ' ' ? 'mx-2' : ''
-            }`}
-            style={{ 
-              transformOrigin: 'bottom',
-              willChange: 'transform, opacity'
-            }}
+            className={`letter inline-block heading-gradient ${letter === ' ' ? 'mx-2' : ''}`}
           >
             {letter}
           </span>
@@ -128,17 +121,16 @@ export default function Hero() {
   return (
     <section 
       id="home" 
-      className="min-h-[85vh] pt-16 flex items-center justify-center relative overflow-hidden bg-background"
+      className="min-h-[80vh] flex items-center justify-center relative overflow-hidden bg-background"
       ref={containerRef}
       style={{ opacity: 0 }}
     >
+      <div className="absolute inset-0 w-full h-full"></div>
+
       <div 
-        className="hero-bg-gradient absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-gradient-to-br from-primary/20 via-secondary/20 to-accent/20 rounded-[100%] blur-3xl -z-10 origin-center transform-gpu"
-        style={{ 
-          willChange: 'transform, opacity',
-          backfaceVisibility: 'hidden'
-        }}
-      />
+        className="hero-bg-gradient absolute top-0 left-1/2 -translate-x-1/2 w-[150%] h-[150%] bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-3xl -z-10 origin-center transform-gpu"
+        style={{ willChange: 'transform, opacity' }}
+      ></div>
       
       <div className="mx-auto max-w-7xl relative z-10">
         <div className="text-center">
@@ -154,12 +146,12 @@ export default function Hero() {
             className="text-xl sm:text-2xl text-text/80 mb-8"
             style={{ clipPath: 'inset(0 100% 0 0)' }}
           >
-             Web Developer & UI/UX Enthusiast
+            Full Stack Developer & UI/UX Enthusiast
           </motion.p>
 
           <div 
             ref={buttonsRef}
-            className="flex flex-wrap justify-center gap-4"
+            className="flex flex-wrap justify-center gap-4 opacity-0"
           >
             <motion.a
               href="#projects"
