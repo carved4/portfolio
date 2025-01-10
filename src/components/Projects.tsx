@@ -1,5 +1,5 @@
 'use client';
-
+import { SiLeetcode } from 'react-icons/si'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import { FiGithub, FiExternalLink } from 'react-icons/fi'
@@ -35,6 +35,15 @@ const projects = [
     github: 'https://github.com/carved4/fileconversionhub',
     live: 'https://fileconverthub.vercel.app',
     icon: BsFileEarmarkArrowUp,
+  },
+  {
+    title: 'LeetHelper',
+    description: 'An intelligent LeetCode problem analysis tool that provides optimization suggestions, complexity analysis, and problem-solving approaches to improve coding skills.',
+    image: '/project4.jpg',
+    tech: ['Python', 'GraphQL', 'HTML', 'Vercel'],
+    github: 'https://github.com/carved4/leethelper',
+    live: 'https://leethelp.vercel.app',
+    icon: SiLeetcode,  // Changed from BsBook to SiLeetcode
   },
 ]
 

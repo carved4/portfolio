@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useEffect, useRef } from 'react'
 import anime from 'animejs'
 import { useTheme } from '../context/ThemeContext'
+import { useInView } from 'framer-motion'
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -11,85 +12,93 @@ export default function Hero() {
   const subtitleRef = useRef<HTMLParagraphElement>(null)
   const buttonsRef = useRef<HTMLDivElement>(null)
   const { theme } = useTheme()
+  const isInView = useInView(containerRef)
 
   useEffect(() => {
+    if (!isInView) return
+
     // Initial setup
     if (containerRef.current) {
       containerRef.current.style.opacity = '1'
     }
 
-    const timeline = anime.timeline({
-      easing: 'easeOutQuint',
-      duration: 600
+    // Main animation timeline
+    const mainTimeline = anime.timeline({
+      easing: 'cubicBezier(0.645, 0.045, 0.355, 1.000)', // Improved easing
+      duration: 800
     })
 
-    // Slide in and reveal letters animation
-    const letters = nameRef.current?.querySelectorAll('.letter')
-    timeline
+    // Background animation
+    mainTimeline
       .add({
         targets: '.hero-bg-gradient',
-        scale: [0, 1],
-        opacity: [0, 1],
-        duration: 800,
-        easing: 'easeOutQuint',
+        scale: [0.8, 1],
+        opacity: [0, 0.8],
+        duration: 1200,
+        easing: 'cubicBezier(0.25, 0.46, 0.45, 0.94)',
         begin: () => {
           if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            timeline.pause()
+            mainTimeline.pause()
           }
         }
       })
+      // Name animation with improved staggering
       .add({
-        targets: letters,
-        translateY: [50, 0],
+        targets: '.letter',
+        translateY: [60, 0],
         opacity: [0, 1],
-        delay: anime.stagger(30, {from: 'center'}),
-        duration: 600,
-        easing: 'easeOutQuint'
-      }, '-=300')
+        rotateX: [90, 0], // Added 3D rotation
+        delay: anime.stagger(40, { from: 'center' }),
+        duration: 800,
+        easing: 'cubicBezier(0.215, 0.61, 0.355, 1)'
+      }, '-=800')
+      // Subtitle animation
       .add({
         targets: subtitleRef.current,
-        translateY: [20, 0],
+        translateY: [30, 0],
         opacity: [0, 1],
-        duration: 600,
-        easing: 'easeOutQuint'
-      }, '-=300')
+        duration: 800,
+        easing: 'cubicBezier(0.215, 0.61, 0.355, 1)'
+      }, '-=600')
+      // Buttons animation with improved staggering
+      .add({
+        targets: buttonsRef.current,
+        opacity: [0, 1],
+        duration: 400,
+        easing: 'cubicBezier(0.4, 0, 0.2, 1)'
+      }, '-=500')
       .add({
         targets: buttonsRef.current?.children,
-        translateY: [20, 0],
-        opacity: [0, 1],
-        delay: anime.stagger(50),
-        duration: 400,
-        easing: 'easeOutQuint'
-      }, '-=300')
+        translateY: [40, 0],
+        scale: [0.95, 1],
+        delay: anime.stagger(150),
+        duration: 800,
+        easing: 'cubicBezier(0.34, 1.56, 0.64, 1)'
+      }, '-=200')
 
-    // Continuous subtle animations - optimized for mobile
+    // Enhanced background animation
     const bgAnimation = anime({
       targets: '.hero-bg-gradient',
       scale: [1, 1.05],
-      opacity: [0.9, 1],
-      duration: 4000,
+      opacity: [0.8, 0.9],
+      duration: 3000,
       direction: 'alternate',
       loop: true,
-      easing: 'easeInOutQuad',
+      easing: 'cubicBezier(0.445, 0.05, 0.55, 0.95)',
       update: function(anim) {
-        // Pause animation when out of viewport
-        if (containerRef.current) {
-          const rect = containerRef.current.getBoundingClientRect()
-          if (rect.bottom < 0 || rect.top > window.innerHeight) {
-            anim.pause()
-          } else {
-            anim.play()
-          }
+        if (!isInView) {
+          anim.pause()
+        } else {
+          anim.play()
         }
       }
     })
 
-    // Cleanup function
     return () => {
+      mainTimeline.pause()
       bgAnimation.pause()
-      timeline.pause()
     }
-  }, [])
+  }, [isInView])
 
   // Split text into individual spans for letter animation
   const renderAnimatedName = () => {
@@ -112,7 +121,7 @@ export default function Hero() {
   return (
     <section 
       id="home" 
-      className="min-h-[90vh] flex items-center justify-center relative overflow-hidden bg-background"
+      className="min-h-[80vh] flex items-center justify-center relative overflow-hidden bg-background"
       ref={containerRef}
       style={{ opacity: 0 }}
     >
@@ -142,7 +151,7 @@ export default function Hero() {
 
           <div 
             ref={buttonsRef}
-            className="flex flex-wrap justify-center gap-4"
+            className="flex flex-wrap justify-center gap-4 opacity-0"
           >
             <motion.a
               href="#projects"
