@@ -2,31 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap');
+
 :root {
   --primary: #00ADB5;
-  --secondary: #393E46;
-  --background: #222831;
-  --text: #EEEEEE;
-  --text-dark: #EEEEEE;
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 0, 4, 15;
-  --background-end-rgb: 0, 0, 0;
-}
-
-.light {
-  --primary: #00ADB5;
-  --secondary: #393E46;
-  --background: #FFFFFF;
-  --text: #000000;
-  --text-dark: #000000;
-}
-
-.dark {
-  --primary: #00ADB5;
-  --secondary: #393E46;
-  --background: #000000;
-  --text: #EEEEEE;
-  --text-dark: #EEEEEE;
+  --secondary: #1a1e24;
+  --background: #0d1117;
+  --text: #adbac7;
+  --text-dark: #768390;
+  --foreground-rgb: 173, 186, 199;
+  --background-start-rgb: 13, 17, 23;
+  --background-end-rgb: 26, 30, 36;
+  --font-jetbrains: 'JetBrains Mono', monospace;
+  --font-fira: 'Fira Code', monospace;
+  --safe-area-inset-bottom: env(safe-area-inset-bottom);
+  --safe-area-inset-top: env(safe-area-inset-top);
 }
 
 /* Ensure smooth scrolling and proper viewport height on mobile */
@@ -34,6 +25,23 @@ html {
   scroll-behavior: smooth;
   height: -webkit-fill-available;
   -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  overscroll-behavior-y: none;
+}
+
+/* Improve mobile text selection */
+::selection {
+  background: var(--primary);
+  color: var(--background);
+  text-shadow: none;
+}
+
+/* Better touch feedback */
+@media (hover: none) {
+  a:active, button:active {
+    opacity: 0.7;
+    transform: scale(0.98);
+  }
 }
 
 body {
@@ -48,12 +56,44 @@ body {
   min-height: -webkit-fill-available;
   overflow-x: hidden;
   touch-action: manipulation;
+  padding-bottom: var(--safe-area-inset-bottom);
+  padding-top: var(--safe-area-inset-top);
+}
+
+/* Improved mobile scrolling */
+@media (max-width: 768px) {
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Prevent pull-to-refresh on mobile */
+  body {
+    overscroll-behavior-y: none;
+  }
+
+  /* Larger touch targets on mobile */
+  a, button {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.5rem 1rem;
+  }
+
+  /* Improved spacing for mobile */
+  .section-padding {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  /* Better font sizes for mobile */
+  .font-code {
+    font-size: 0.9rem;
+  }
 }
 
 @layer components {
   .section-padding {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
     padding-top: 3rem;
     padding-bottom: 3rem;
     margin-left: auto;
@@ -78,45 +118,58 @@ body {
     align-items: center;
   }
 
-  /* Mobile-optimized text sizes */
+  /* Enhanced mobile text sizes */
   .text-responsive {
-    font-size: 1rem;
+    font-size: clamp(0.875rem, 4vw, 1rem);
   }
 
   .text-responsive.sm\:text-lg {
-    font-size: 1.125rem;
+    font-size: clamp(1rem, 4vw, 1.125rem);
   }
 
   .text-responsive.md\:text-xl {
-    font-size: 1.25rem;
+    font-size: clamp(1.125rem, 4vw, 1.25rem);
   }
 
-  /* Container with safe areas for mobile */
+  /* Improved container with safe areas for mobile */
   .safe-container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
     margin-left: auto;
     margin-right: auto;
     max-width: 80rem;
+    width: 100%;
   }
 
   .safe-container.sm\:px-6 {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: max(1.5rem, env(safe-area-inset-left));
+    padding-right: max(1.5rem, env(safe-area-inset-right));
   }
 
   .safe-container.md\:px-8 {
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding-left: max(2rem, env(safe-area-inset-left));
+    padding-right: max(2rem, env(safe-area-inset-right));
   }
 
-  /* Touch-friendly buttons */
+  /* Enhanced touch-friendly buttons */
   .touch-target {
-    min-height: 2.75rem;
-    min-width: 2.75rem;
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+
+  /* Improved animations for mobile */
+  @media (prefers-reduced-motion: reduce) {
+    .letter, .hero-bg-gradient {
+      animation: none !important;
+      transition: none !important;
+    }
   }
 
   .letter {
@@ -129,5 +182,60 @@ body {
     transform-origin: center;
     will-change: transform, opacity;
     backface-visibility: hidden;
+  }
+
+  /* Mobile-optimized scrollbar */
+  @media (max-width: 768px) {
+    ::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 2px;
+    }
+  }
+
+  /* Tech-themed divider */
+  .tech-divider {
+    position: relative;
+    width: 12rem;
+    height: 2px;
+    background: var(--primary);
+    opacity: 0.3;
+    margin: 0 auto;
+  }
+  
+  .tech-divider::before,
+  .tech-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    background: var(--primary);
+    border-radius: 50%;
+    transform: translateY(-50%);
+  }
+
+  .tech-divider::before {
+    left: 0;
+  }
+
+  .tech-divider::after {
+    right: 0;
+  }
+
+  .tech-divider::before {
+    box-shadow: 24px 0 0 var(--primary);
+  }
+
+  .tech-divider::after {
+    box-shadow: -24px 0 0 var(--primary);
   }
 }

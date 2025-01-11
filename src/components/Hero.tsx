@@ -102,19 +102,28 @@ export default function Hero() {
 
   // Split text into individual spans for letter animation
   const renderAnimatedName = () => {
-    const name = "Owen Smith"
     return (
-      <>
-        <span className="mr-2 text-text">Hi, I'm</span>
-        {name.split('').map((letter, index) => (
-          <span 
-            key={index} 
-            className={`letter inline-block heading-gradient ${letter === ' ' ? 'mx-2' : ''}`}
+      <div className="flex flex-col items-center gap-2 font-jetbrains">
+        <div className="flex items-center gap-2 text-lg sm:text-xl text-text/80">
+          <span className="text-primary">~/owen-smith</span>
+          <span className="text-text/50">on</span>
+          <span className="text-green-400">main</span>
+          <span className="text-primary">⌥</span>
+        </div>
+        <div className="flex items-center gap-3 text-3xl sm:text-5xl">
+          <span className="text-primary">$</span>
+          <span className="text-text/90">whoami</span>
+          <motion.span 
+            className="text-text/50 animate-pulse"
+            whileHover={{ opacity: 1 }}
           >
-            {letter}
-          </span>
-        ))}
-      </>
+            █
+          </motion.span>
+        </div>
+        <div className="mt-2 text-xl sm:text-2xl text-text/80 font-code">
+          <span className="text-primary">&gt;</span> Owen Smith
+        </div>
+      </div>
     )
   }
 
@@ -134,19 +143,19 @@ export default function Hero() {
       
       <div className="mx-auto max-w-7xl relative z-10">
         <div className="text-center">
-          <h1 
+          <motion.h1 
             ref={nameRef}
-            className="text-4xl sm:text-6xl font-bold mb-6 relative text-text"
+            className="mb-6 relative"
           >
             {renderAnimatedName()}
-          </h1>
+          </motion.h1>
 
           <motion.p
             ref={subtitleRef}
-            className="text-xl sm:text-2xl text-text/80 mb-8"
+            className="text-lg sm:text-xl text-text/70 mb-8 font-code"
             style={{ clipPath: 'inset(0 100% 0 0)' }}
           >
-            Full Stack Developer & UI/UX Enthusiast
+            <span className="text-primary">$</span> Full Stack Developer & UI/UX Enthusiast
           </motion.p>
 
           <div 
@@ -155,73 +164,84 @@ export default function Hero() {
           >
             <motion.a
               href="#projects"
-              className="px-8 py-3 rounded-full bg-gradient-to-r from-primary to-primary/90 text-text font-medium tracking-wide shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300"
+              className="px-8 py-3 rounded-lg bg-secondary/30 backdrop-blur-sm
+                border border-text/10 hover:border-text/20
+                text-text/90 font-code
+                focus:outline-none focus:ring-2 focus:ring-primary/50 
+                transition-all duration-300
+                group flex items-center gap-3"
               initial={{ scale: 1 }}
               whileHover={{ 
                 scale: 1.02,
-                transition: {
-                  type: "spring",
-                  stiffness: 400,
-                  damping: 10
-                }
+                boxShadow: "0 10px 30px -15px rgba(0,0,0,0.3)"
               }}
-              whileTap={{ 
-                scale: 0.98,
-                transition: {
-                  type: "spring",
-                  stiffness: 400,
-                  damping: 10
-                }
-              }}
+              whileTap={{ scale: 0.98 }}
             >
-              View My Work
+              <span className="text-primary">$</span>
+              <span>cd</span>
+              <span className="text-primary/80">./projects</span>
+              <motion.span 
+                className="text-primary"
+                initial={{ x: 0 }}
+                whileHover={{ x: 3 }}
+              >
+                →
+              </motion.span>
             </motion.a>
+
             <motion.a
               href="#contact"
-              className="px-8 py-3 rounded-full bg-gradient-to-r from-secondary to-secondary/90 text-text font-medium tracking-wide shadow-lg shadow-secondary/20 hover:shadow-xl hover:shadow-secondary/30 transition-all duration-300"
+              className="px-8 py-3 rounded-lg bg-secondary/30 backdrop-blur-sm
+                border border-text/10 hover:border-text/20
+                text-text/90 font-code
+                focus:outline-none focus:ring-2 focus:ring-primary/50 
+                transition-all duration-300
+                group flex items-center gap-3"
               initial={{ scale: 1 }}
               whileHover={{ 
                 scale: 1.02,
-                transition: {
-                  type: "spring",
-                  stiffness: 400,
-                  damping: 10
-                }
+                boxShadow: "0 10px 30px -15px rgba(0,0,0,0.3)"
               }}
-              whileTap={{ 
-                scale: 0.98,
-                transition: {
-                  type: "spring",
-                  stiffness: 400,
-                  damping: 10
-                }
-              }}
+              whileTap={{ scale: 0.98 }}
             >
-              Get in Touch
+              <span className="text-primary">$</span>
+              <span>ssh</span>
+              <span className="text-primary/80">./contact</span>
+              <motion.span 
+                className="text-primary"
+                initial={{ x: 0 }}
+                whileHover={{ x: 3 }}
+              >
+                →
+              </motion.span>
             </motion.a>
+
             <motion.a
               href="/resume (1).pdf"
               download
-              className="px-8 py-3 rounded-full bg-gradient-to-r from-accent to-accent/90 text-text font-medium tracking-wide shadow-lg shadow-accent/20 hover:shadow-xl hover:shadow-accent/30 transition-all duration-300"
+              className="px-8 py-3 rounded-lg bg-secondary/30 backdrop-blur-sm
+                border border-text/10 hover:border-text/20
+                text-text/90 font-code
+                focus:outline-none focus:ring-2 focus:ring-primary/50 
+                transition-all duration-300
+                group flex items-center gap-3"
               initial={{ scale: 1 }}
               whileHover={{ 
                 scale: 1.02,
-                transition: {
-                  type: "spring",
-                  stiffness: 400,
-                  damping: 10
-                }
+                boxShadow: "0 10px 30px -15px rgba(0,0,0,0.3)"
               }}
-              whileTap={{ 
-                scale: 0.98,
-                transition: {
-                  type: "spring",
-                  stiffness: 400,
-                  damping: 10
-                }
-              }}
+              whileTap={{ scale: 0.98 }}
             >
-              Download Resume
+              <span className="text-primary">$</span>
+              <span>wget</span>
+              <span className="text-primary/80">resume.pdf</span>
+              <motion.span 
+                className="text-primary"
+                initial={{ x: 0 }}
+                whileHover={{ x: 3 }}
+              >
+                →
+              </motion.span>
             </motion.a>
           </div>
         </div>

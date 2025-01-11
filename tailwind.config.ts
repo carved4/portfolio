@@ -16,6 +16,8 @@ const config: Config = {
         dimWhite: "rgba(255, 255, 255, 0.7)",
       },
       fontFamily: {
+        jetbrains: ['var(--font-jetbrains)'],
+        code: ['var(--font-fira)'],
         poppins: ["Poppins", "sans-serif"],
       },
     },
