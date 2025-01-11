@@ -10,14 +10,6 @@ import { useTheme } from '../context/ThemeContext'
 
 const projects = [
   {
-    title: 'sudo apt-get study',
-    description: 'A comprehensive study platform built with Next.js, TypeScript, and Tailwind CSS. Features include task management, progress tracking, and collaborative study tools.',
-    tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'PostgreSQL'],
-    github: 'https://github.com/carved4/studyflow',
-    live: 'https://studyflow-six.vercel.app',
-    icon: BsBook,
-  },
-  {
     title: './nutrition-tracker',
     description: 'A nutrition tracking application that helps users monitor their daily nutritional intake and maintain a healthy diet.',
     tech: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],
