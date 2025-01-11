@@ -10,8 +10,8 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'Owen Smith Portfolio',
-  description: 'Portfolio website showcasing my work and skills',
+  title: 'owen smith',
+  description: 'portfolio',
   icons: {
     icon: [
       {

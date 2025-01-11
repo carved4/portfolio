@@ -38,7 +38,7 @@ const projects = [
     description: 'An intelligent LeetCode problem analysis tool that provides optimization suggestions, complexity analysis, and problem-solving approaches to improve coding skills.',
     tech: ['Python', 'GraphQL', 'HTML', 'Vercel'],
     github: 'https://github.com/carved4/leethelper',
-    live: 'https://leethelp.vercel.app',
+    live: 'https://leethelp.live',
     icon: SiLeetcode,
   },
 ]
