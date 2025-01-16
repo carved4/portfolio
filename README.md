@@ -1,12 +1,10 @@
-# Personal Developer Portfolio
-
-## Overview
-A modern, responsive personal portfolio website showcasing skills, projects, and professional experience.
-
+Personal Portfolio
+:3 
 ## Tech Stack
-- Next.js 14
+- Next.js
 - React
+- Shadcn-ui
 - TypeScript
 - Tailwind CSS
 - Framer Motion
-- Vercel Deployment
+- Vercel
