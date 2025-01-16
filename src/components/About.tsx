@@ -56,64 +56,51 @@ export default function About() {
           className="max-w-3xl mx-auto"
         >
           <motion.div 
-            className="bg-secondary/30 backdrop-blur-sm rounded-2xl p-8 border border-text/5 shadow-lg"
+            className="bg-[#1a1a1a] backdrop-blur-md rounded-lg p-8 sm:p-10
+              border border-primary/10
+              shadow-lg shadow-black/20
+              hover:shadow-xl hover:shadow-primary/10
+              transition-all duration-300"
             whileHover={{ 
-              boxShadow: "0 20px 40px -15px rgba(0,0,0,0.3)",
-              scale: 1.02,
-              borderColor: "rgba(238, 238, 238, 0.2)"
+              scale: 1.01,
             }}
             transition={{ duration: 0.3 }}
           >
-            <p className="text-text/90 text-lg mb-6 font-code leading-relaxed">
-              I'm a <motion.span 
-                className="text-primary font-semibold inline-block"
-                whileHover={{ scale: 1.1, y: -2 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >third year student</motion.span> at Adrian College, majoring in{' '}
-              <motion.span 
-                className="text-primary font-semibold inline-block"
-                whileHover={{ scale: 1.1, y: -2 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >Computer Science</motion.span> and minoring in{' '}
-              <motion.span 
-                className="text-primary font-semibold inline-block"
-                whileHover={{ scale: 1.1, y: -2 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >Cloud Application Development</motion.span>. 
-              As a passionate developer, I'm driven to create innovative solutions to complex problems. 
-              With a strong foundation in modern web technologies, I aim to craft applications that deliver 
-              both real-world functionality and an exceptional user experience.
+            <p className="text-text/90 text-base sm:text-lg mb-8 font-code leading-loose">
+              I'm a <span className="text-primary hover:underline decoration-primary/30 transition-all duration-200">third year student</span> at Adrian College, 
+              pursuing a major in <span className="text-primary hover:underline decoration-primary/30 transition-all duration-200">Computer Science</span> and 
+              a minor in <span className="text-primary hover:underline decoration-primary/30 transition-all duration-200">Cloud Application Development</span>. 
+              With an unwavering passion for development, I enjoy transforming complex 
+              challenges into elegant solutions.
             </p>
-            <p className="text-text/90 text-lg font-code leading-relaxed">
-              When I'm not coding, you can find me diving into{' '}
-              <motion.span 
-                className="text-primary font-semibold inline-block"
-                whileHover={{ scale: 1.1, y: -2 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >emerging technologies</motion.span>,
-              contributing to <motion.span 
-                className="text-primary font-semibold inline-block"
-                whileHover={{ scale: 1.1, y: -2 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >open-source projects</motion.span>,
-              learning more about <motion.span 
-                className="text-primary font-semibold inline-block"
-                whileHover={{ scale: 1.1, y: -2 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >LLMs and machine learning</motion.span>,
-              or enjoying quality time with my girlfriend and cat.
+            
+            <p className="text-text/90 text-base sm:text-lg font-code leading-loose">
+              Beyond the code editor, you'll find me exploring{' '}
+              <span className="text-primary hover:underline decoration-primary/30 transition-all duration-200">
+                emerging technologies
+              </span>,
+              contributing to{' '}
+              <span className="text-primary hover:underline decoration-primary/30 transition-all duration-200">
+                open-source projects
+              </span>,
+              diving into{' '}
+              <span className="text-primary hover:underline decoration-primary/30 transition-all duration-200">
+                LLMs and machine learning
+              </span>,
+              or cherishing moments with my girlfriend and cat.
             </p>
           </motion.div>
 
           <motion.button
             whileHover={{ 
               scale: 1.01,
-              boxShadow: "0 10px 30px -15px rgba(0,0,0,0.3)"
             }}
             whileTap={{ scale: 0.99 }}
-            className="mt-12 w-full p-5 rounded-xl
-              bg-secondary/30 backdrop-blur-sm
-              border border-text/10 hover:border-text/20
+            className="mt-12 w-full p-6 rounded-lg
+              bg-[#1a1a1a] backdrop-blur-md
+              border border-primary/10
+              shadow-lg shadow-black/20
+              hover:shadow-xl hover:shadow-primary/10
               text-text/90 font-code
               focus:outline-none focus:ring-2 focus:ring-primary/50 
               transition-all duration-300

@@ -76,15 +76,18 @@ export default function Skills() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               whileHover={{ 
-                y: -5,
-                transition: { duration: 0.3 }
+                scale: 1.01,
               }}
               transition={{ 
                 duration: 0.2,
                 delay: index * 0.1 
               }}
               viewport={{ once: true }}
-              className="bg-secondary/30 backdrop-blur-sm rounded-lg overflow-hidden border border-text/10 hover:border-text/20 shadow-lg hover:shadow-xl transition-all duration-300 p-6"
+              className="bg-[#1a1a1a] backdrop-blur-md rounded-lg p-6
+                border border-primary/10
+                shadow-lg shadow-black/20
+                hover:shadow-xl hover:shadow-primary/10
+                transition-all duration-300"
             >
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-primary font-code">$</span>
@@ -92,22 +95,33 @@ export default function Skills() {
                   <motion.div
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.5 }}
+                    className="text-primary/80 hover:text-primary transition-colors duration-300"
                   >
-                    <skill.icon className="w-5 h-5 text-primary" />
+                    <skill.icon className="w-5 h-5" />
                   </motion.div>
-                  <h3 className="text-lg font-semibold text-text font-code">{skill.name}</h3>
+                  <h3 className="text-lg font-medium text-text/90 font-code">{skill.name}</h3>
                 </div>
               </div>
-              <div className="pl-6 border-l-2 border-primary/20 mb-4">
-                <p className="text-text/80 font-code text-sm">{skill.description}</p>
+              
+              <div className="pl-6 border-l border-primary/10 mb-4">
+                <p className="text-text/70 font-code text-sm">{skill.description}</p>
               </div>
-              <div className="pl-6 font-code text-sm">
-                <span className="text-text/50">$ </span>
-                <span className="text-text/80">{skill.command}</span>
+              
+              <div className="pl-6 font-code text-sm group">
+                <span className="text-primary/70">$ </span>
+                <span className="text-text/70 group-hover:text-text/90 transition-colors duration-300">
+                  {skill.command}
+                </span>
                 <motion.span 
                   className="text-text/50 ml-1 inline-block"
-                  animate={{ opacity: [1, 0] }}
-                  transition={{ duration: 1, repeat: Infinity, repeatType: "reverse" }}
+                  animate={{ 
+                    opacity: [1, 0],
+                    transition: {
+                      duration: 0.8,
+                      repeat: Infinity,
+                      repeatType: "reverse"
+                    }
+                  }}
                 >
                   █
                 </motion.span>

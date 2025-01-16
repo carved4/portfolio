@@ -66,8 +66,8 @@ export default function Projects() {
               git
             </motion.span>
             {' '}
-            <span className="text-primary/80">~/</span>projects
-            <motion.span className="text-primary/80">.git</motion.span>
+            <span className="text-primary/80"></span>projects
+            <motion.span className="text-primary/80"></motion.span>
             <motion.span 
               className="text-text/50 ml-1 animate-pulse"
               whileHover={{ opacity: 1 }}
@@ -86,7 +86,7 @@ export default function Projects() {
           />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -100,54 +100,108 @@ export default function Projects() {
                   ease: "easeOut"
                 }
               }}
-              whileHover={{ 
-                y: -10,
-                transition: { duration: 0.3 }
-              }}
+              whileHover={{ scale: 1.01 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="bg-secondary/30 backdrop-blur-sm rounded-lg overflow-hidden border border-text/10 hover:border-text/20 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="group relative bg-[#1a1a1a] backdrop-blur-md rounded-lg
+                border border-primary/10
+                shadow-lg shadow-black/20
+                hover:shadow-xl hover:shadow-primary/10
+                transition-all duration-300
+                overflow-hidden"
             >
-              <div className="p-6">
-                <div className="flex items-center gap-3 mb-4">
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                animate={{
+                  backgroundPosition: ["0% 0%", "100% 100%"],
+                }}
+                transition={{
+                  duration: 8,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
+              />
+
+              <div className="relative p-6 sm:p-8">
+                <div className="flex items-center gap-3 mb-6">
                   <span className="text-primary font-code">$</span>
                   <div className="flex items-center gap-3">
-                    {project.icon && <project.icon className="w-5 h-5 text-primary" />}
-                    <h3 className="text-xl font-semibold text-text font-code">{project.title}</h3>
+                    {project.icon && (
+                      <motion.div
+                        whileHover={{ rotate: 360, scale: 1.1 }}
+                        transition={{ duration: 0.5 }}
+                        className="text-primary/80 hover:text-primary transition-colors duration-300"
+                      >
+                        <project.icon className="w-6 h-6" />
+                      </motion.div>
+                    )}
+                    <h3 className="text-lg sm:text-xl font-medium text-text/90 font-code group-hover:text-primary transition-colors duration-300">
+                      {project.title}
+                    </h3>
                   </div>
                 </div>
-                <div className="pl-6 border-l-2 border-primary/20 mb-4">
-                  <p className="text-text/80 font-code text-sm">{project.description}</p>
+
+                <div className="pl-6 border-l border-primary/10 mb-6">
+                  <p className="text-text/70 font-code text-sm sm:text-base leading-relaxed group-hover:text-text/80 transition-colors duration-300">
+                    {project.description}
+                  </p>
                 </div>
-                <div className="flex flex-wrap gap-2 mb-4">
+
+                <div className="flex flex-wrap gap-2 mb-6 pl-6">
                   {project.tech.map((tech) => (
-                    <span
+                    <motion.span
                       key={tech}
-                      className="px-3 py-1 text-sm bg-secondary/50 text-text/80 rounded-full font-code border border-text/10"
+                      whileHover={{ y: -2 }}
+                      className="px-3 py-1 text-sm 
+                        bg-[#1a1a1a] text-text/70
+                        rounded-md font-code 
+                        border border-primary/10
+                        shadow-sm shadow-black/10
+                        hover:border-primary/30 hover:text-text/90
+                        transition-all duration-300"
                     >
                       {tech}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
-                <div className="flex gap-4 pl-6">
+
+                <div className="flex gap-6 pl-6">
                   <motion.a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-text/70 hover:text-primary transition-colors font-code text-sm"
-                    whileHover={{ x: 5 }}
+                    className="flex items-center gap-2 text-text/70 hover:text-primary 
+                      transition-all duration-300 font-code text-sm group/link"
+                    whileHover={{ x: 3 }}
                   >
-                    <FiGithub className="w-4 h-4" />
-                    <span>source</span>
+                    <motion.div
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <FiGithub className="w-4 h-4" />
+                    </motion.div>
+                    <span className="relative">
+                      source
+                      <span className="absolute left-0 right-0 bottom-0 h-px bg-primary transform scale-x-0 group-hover/link:scale-x-100 transition-transform duration-300" />
+                    </span>
                   </motion.a>
                   <motion.a
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-text/70 hover:text-primary transition-colors font-code text-sm"
-                    whileHover={{ x: 5 }}
+                    className="flex items-center gap-2 text-text/70 hover:text-primary 
+                      transition-all duration-300 font-code text-sm group/link"
+                    whileHover={{ x: 3 }}
                   >
-                    <FiExternalLink className="w-4 h-4" />
-                    <span>demo</span>
+                    <motion.div
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <FiExternalLink className="w-4 h-4" />
+                    </motion.div>
+                    <span className="relative">
+                      demo
+                      <span className="absolute left-0 right-0 bottom-0 h-px bg-primary transform scale-x-0 group-hover/link:scale-x-100 transition-transform duration-300" />
+                    </span>
                   </motion.a>
                 </div>
               </div>

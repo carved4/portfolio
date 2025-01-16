@@ -8,11 +8,11 @@
 :root {
   --primary: #00ADB5;
   --secondary: #1a1e24;
-  --background: #0d1117;
+  --background: #0a0a0a;
   --text: #adbac7;
   --text-dark: #768390;
   --foreground-rgb: 173, 186, 199;
-  --background-start-rgb: 13, 17, 23;
+  --background-start-rgb: 10, 10, 10;
   --background-end-rgb: 26, 30, 36;
   --font-jetbrains: 'JetBrains Mono', monospace;
   --font-fira: 'Fira Code', monospace;
@@ -205,51 +205,55 @@ body {
   .tech-divider {
     position: relative;
     width: 12rem;
-    height: 2px;
+    height: 1px;
     background: var(--primary);
-    opacity: 0.4;
+    opacity: 0.2;
     margin: 0 auto;
-    box-shadow: 0 0 8px var(--primary);
+    box-shadow: 0 0 4px var(--primary);
   }
   
   .tech-divider::before,
   .tech-divider::after {
     content: '';
     position: absolute;
-    width: 6px;
-    height: 6px;
+    width: 4px;
+    height: 4px;
     background: var(--primary);
     border-radius: 50%;
     top: 50%;
     transform: translateY(-50%);
-    box-shadow: 0 0 5px var(--primary);
-    animation: pulse 2s infinite;
+    box-shadow: 0 0 3px var(--primary);
+    animation: pulse 3s infinite;
   }
 
   .tech-divider::before {
-    left: -3px;
+    left: -2px;
+    box-shadow: 
+      0 0 3px var(--primary),
+      24px 0 0 -2px rgba(0, 173, 181, 0.3),
+      48px 0 0 -2px rgba(0, 173, 181, 0.2);
   }
 
   .tech-divider::after {
-    right: -3px;
-  }
-
-  .tech-divider::after {
-    animation-delay: 1s;
+    right: -2px;
+    box-shadow: 
+      0 0 3px var(--primary),
+      -24px 0 0 -2px rgba(0, 173, 181, 0.3),
+      -48px 0 0 -2px rgba(0, 173, 181, 0.2);
   }
 
   @keyframes pulse {
     0% {
-      opacity: 0.3;
-      transform: translateY(-50%) scale(0.8);
+      opacity: 0.2;
+      transform: translateY(-50%) scale(0.9);
     }
     50% {
-      opacity: 1;
-      transform: translateY(-50%) scale(1.2);
+      opacity: 0.4;
+      transform: translateY(-50%) scale(1.1);
     }
     100% {
-      opacity: 0.3;
-      transform: translateY(-50%) scale(0.8);
+      opacity: 0.2;
+      transform: translateY(-50%) scale(0.9);
     }
   }
 
