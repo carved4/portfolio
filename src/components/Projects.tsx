@@ -23,7 +23,15 @@ const projects = [
     tech: ['Go', 'ChaCha20', 'Memory Execution', 'Malware Development'],
     github: 'https://github.com/carved4/gocrypter',
     live: 'https://github.com/carved4/gocrypter/blob/main/README.md',
-    icon: BsBook, // Using the book icon as a placeholder
+    icon: BsBook,
+  },
+  {
+    title: 'backblaze-memexec',
+    description: 'POC redteaming Go utility that downloads any executable directly from Backblaze B2 cloud storage and runs them in memory without ever saving them to disk.',
+    tech: ['Go', 'Memory Execution', 'Backblaze B2', 'Red Teaming'],
+    github: 'https://github.com/carved4/backblaze-memexec',
+    live: 'https://github.com/carved4/backblaze-memexec/blob/main/README.md',
+    icon: BsBook,
   },
   {
     title: 'convert.sh',
