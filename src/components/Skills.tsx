@@ -17,7 +17,7 @@ const skills = [
   { name: 'TypeScript', icon: SiTypescript, description: 'Type-safe JavaScript', command: 'tsc --watch' },
   { name: 'Tailwind CSS', icon: SiTailwindcss, description: 'Utility-first CSS', command: 'npx tailwindcss' },
   { name: 'Python', icon: SiPython, description: 'Scripting & Automation', command: 'python3 main.py' },
-  { name: 'Go', icon: SiGo, description: 'Backend & Malware Development', command: 'go build -ldflags="-s -w" -o bin.exe' },
+  { name: 'Go', icon: SiGo, description: 'Backend & Malware Development', command: 'go build -ldflags="-s -w" -trimpath -o bin.exe' },
   { name: 'Git', icon: SiGit, description: 'Version Control', command: 'git push origin' },
   { name: 'Docker', icon: SiDocker, description: 'Containerization', command: 'docker-compose up' },
 ]
