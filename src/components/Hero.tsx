@@ -279,7 +279,7 @@ export default function Hero() {
   return (
     <section 
       id="home" 
-      className="min-h-[80vh] flex items-center justify-center relative overflow-hidden bg-background"
+      className="min-h-[60vh] flex items-center justify-center relative overflow-hidden bg-background pt-16 pb-10"
       ref={containerRef}
       style={{ opacity: 0 }}
     >
@@ -324,7 +324,7 @@ export default function Hero() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8, duration: 0.5 }}
             >
-              Full Stack Developer & UI/UX Enthusiast
+              UI & UX Enthusiast with an Interest in Malware Development
             </motion.span>
             <motion.span
               className="inline-block w-[2px] h-[14px] bg-text/50 ml-2 align-middle"

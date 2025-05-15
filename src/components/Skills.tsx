@@ -3,23 +3,21 @@
 import { motion } from 'framer-motion'
 import { 
   SiReact, 
-  SiNextdotjs, 
   SiTypescript,
   SiTailwindcss,
-  SiNodedotjs,
   SiPython,
   SiGit,
-  SiDocker 
+  SiDocker,
+  SiGo 
 } from 'react-icons/si'
 import { useTheme } from '../context/ThemeContext'
 
 const skills = [
   { name: 'React', icon: SiReact, description: 'Frontend Development', command: 'npm start' },
-  { name: 'Next.js', icon: SiNextdotjs, description: 'Full-stack Framework', command: 'next dev' },
   { name: 'TypeScript', icon: SiTypescript, description: 'Type-safe JavaScript', command: 'tsc --watch' },
   { name: 'Tailwind CSS', icon: SiTailwindcss, description: 'Utility-first CSS', command: 'npx tailwindcss' },
-  { name: 'Node.js', icon: SiNodedotjs, description: 'Backend Development', command: 'node server.js' },
   { name: 'Python', icon: SiPython, description: 'Scripting & Automation', command: 'python3 main.py' },
+  { name: 'Go', icon: SiGo, description: 'Backend & Malware Development', command: 'go build -ldflags="-s -w" -o bin.exe' },
   { name: 'Git', icon: SiGit, description: 'Version Control', command: 'git push origin' },
   { name: 'Docker', icon: SiDocker, description: 'Containerization', command: 'docker-compose up' },
 ]

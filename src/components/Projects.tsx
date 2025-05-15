@@ -18,6 +18,14 @@ const projects = [
     icon: IoNutritionOutline,
   },
   {
+    title: 'gocrypter',
+    description: 'A Go-based crypter that implements ChaCha20 stream cipher for executable encryption and in-memory execution with go-memexec, designed for security testing and red team operations.',
+    tech: ['Go', 'ChaCha20', 'Memory Execution', 'Malware Development'],
+    github: 'https://github.com/carved4/gocrypter',
+    live: 'https://github.com/carved4/gocrypter/blob/main/README.md',
+    icon: BsBook, // Using the book icon as a placeholder
+  },
+  {
     title: 'convert.sh',
     description: 'A versatile file conversion platform that enables users to seamlessly transform documents and media files between different formats with an intuitive drag-and-drop interface.',
     tech: ['Vite', 'Tailwind', 'Javascript', 'Next.js', 'Node.js'],

@@ -70,24 +70,7 @@ export default function About() {
               I'm a <span className="text-primary hover:underline decoration-primary/30 transition-all duration-200">third year student</span> at Adrian College, 
               pursuing a major in <span className="text-primary hover:underline decoration-primary/30 transition-all duration-200">Computer Science</span> and 
               a minor in <span className="text-primary hover:underline decoration-primary/30 transition-all duration-200">Cloud Application Development</span>. 
-              With an unwavering passion for development, I enjoy transforming complex 
-              challenges into elegant solutions.
-            </p>
-            
-            <p className="text-text/90 text-base sm:text-lg font-code leading-loose">
-              Beyond the code editor, you'll find me exploring{' '}
-              <span className="text-primary hover:underline decoration-primary/30 transition-all duration-200">
-                emerging technologies
-              </span>,
-              contributing to{' '}
-              <span className="text-primary hover:underline decoration-primary/30 transition-all duration-200">
-                open-source projects
-              </span>,
-              diving into{' '}
-              <span className="text-primary hover:underline decoration-primary/30 transition-all duration-200">
-                LLMs and machine learning
-              </span>,
-              or cherishing moments with my girlfriend and cat.
+              I enjoy malware development, security testing + automation, and frontend development.
             </p>
           </motion.div>
 
