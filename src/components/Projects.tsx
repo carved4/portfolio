@@ -34,6 +34,14 @@ const projects = [
     icon: BsBook,
   },
   {
+    title: 'rust-backblaze-memexec',
+    description: 'Rust rewrite of my golang redteaming utility that downloads any executable directly from Backblaze B2 cloud storage and runs them in memory.',
+    tech: ['Rust', 'Memory Execution', 'Backblaze B2', 'Red Teaming'],
+    github: 'https://github.com/carved4/rust-backblaze-memexec',
+    live: 'https://github.com/carved4/rust-backblaze-memexec/blob/main/README.md',
+    icon: BsBook,
+  },
+  {
     title: 'convert.sh',
     description: 'A versatile file conversion platform that enables users to seamlessly transform documents and media files between different formats with an intuitive drag-and-drop interface.',
     tech: ['Vite', 'Tailwind', 'Javascript', 'Next.js', 'Node.js'],
