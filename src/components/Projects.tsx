@@ -28,7 +28,7 @@ const projects = [
   {
     title: 'backblaze-memexec',
     description: 'POC redteaming Go utility that downloads any executable directly from Backblaze B2 cloud storage and runs them in memory without ever saving them to disk.',
-    tech: ['Go', 'Memory Execution', 'Backblaze B2', 'Red Teaming'],
+    tech: ['Golang', 'Memory Execution', 'Backblaze B2', 'Red Teaming'],
     github: 'https://github.com/carved4/backblaze-memexec',
     live: 'https://github.com/carved4/backblaze-memexec/blob/main/README.md',
     icon: BsBook,
@@ -39,6 +39,14 @@ const projects = [
     tech: ['Rust', 'Memory Execution', 'Backblaze B2', 'Red Teaming'],
     github: 'https://github.com/carved4/rust-backblaze-memexec',
     live: 'https://github.com/carved4/rust-backblaze-memexec/blob/main/README.md',
+    icon: BsBook,
+  },
+  {
+    title: 'go-curl-memexec',
+    description: 'A lightweight, memory-safe Windows PE file execution tool that downloads and executes payloads without ever touching the disk.',
+    tech: ['C++', 'Memory Execution', 'Malware Development', 'Golang'],
+    github: 'https://github.com/carved4/go-curl-memexec',
+    live: 'https://github.com/carved4/go-curl-memexec/blob/main/README.md',
     icon: BsBook,
   },
   {
