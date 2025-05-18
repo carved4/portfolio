@@ -42,11 +42,11 @@ const projects = [
     icon: BsBook,
   },
   {
-    title: 'go-curl-memexec',
+    title: 'go-http-memexec',
     description: 'A lightweight, memory-safe Windows PE file execution tool that downloads and executes payloads without ever touching the disk.',
     tech: ['C++', 'Memory Execution', 'Malware Development', 'Golang'],
-    github: 'https://github.com/carved4/go-curl-memexec',
-    live: 'https://github.com/carved4/go-curl-memexec/blob/main/README.md',
+    github: 'https://github.com/carved4/go-http-memexec',
+    live: 'https://github.com/carved4/go-http-memexec/blob/main/README.md',
     icon: BsBook,
   },
   {
