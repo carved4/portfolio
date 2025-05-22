@@ -43,10 +43,18 @@ const projects = [
   },
   {
     title: 'go-http-memexec',
-    description: 'A lightweight, memory-safe Windows PE file execution tool that downloads and executes payloads without ever touching the disk.',
+    description: 'A lightweight, memory-safe Windows PE file execution tool that downloads and executes payloads in memory.',
     tech: ['C++', 'Memory Execution', 'Malware Development', 'Golang'],
     github: 'https://github.com/carved4/go-http-memexec',
     live: 'https://github.com/carved4/go-http-memexec/blob/main/README.md',
+    icon: BsBook,
+  },
+  {
+    title: 'pure-go-http-memexec',
+    description: 'A lightweight, memory-safe Windows PE file execution tool that downloads and executes payloads without ever touching the disk. Supports both executables and DLLs.',
+    tech: ['Golang', 'Red Teaming', 'Malware Development'],
+    github: 'https://github.com/carved4/pure-go-http-memexec',
+    live: 'https://github.com/carved4/pure-go-http-memexec/blob/main/README.md',
     icon: BsBook,
   },
   {
