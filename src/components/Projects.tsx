@@ -58,6 +58,14 @@ const projects = [
     icon: BsBook,
   },
   {
+    title: 'go-direct-syscall',
+    description: 'A Go library providing TRUE direct Windows API syscalls using external assembly and PE parsing. This library enables developers to call any Windows API function directly through syscalls, bypassing traditional API hooking points.',
+    tech: ['Golang', 'Assembly', 'Windows API', 'System Programming'],
+    github: 'https://github.com/carved4/go-direct-syscall',
+    live: 'https://github.com/carved4/go-direct-syscall/blob/main/README.md',
+    icon: BsBook,
+  },
+  {
     title: 'convert.sh',
     description: 'A versatile file conversion platform that enables users to seamlessly transform documents and media files between different formats with an intuitive drag-and-drop interface.',
     tech: ['Vite', 'Tailwind', 'Javascript', 'Next.js', 'Node.js'],
