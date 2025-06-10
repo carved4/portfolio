@@ -19,7 +19,7 @@ const projects = [
   },
   {
     title: './go-crypter',
-    description: 'A Go-based crypter that implements Chacha20, AES-CTR, and Twofish for executable encryption and in-memory execution with direct syscalls, designed for security testing and red team operations.',
+    description: 'A Go-based crypter that implements Chacha20, AES-GCM, and Twofish for executable encryption and in-memory execution with direct syscalls, designed for security testing and red team operations.',
     tech: ['Go', 'ChaCha20', 'AES', 'Twofish', 'Memory Execution', 'Malware Development'],
     github: 'https://github.com/carved4/go-crypter',
     live: 'https://github.com/carved4/go-crypter/blob/main/README.md',
@@ -35,7 +35,7 @@ const projects = [
   },
   {
     title: './mach-o-crypter',
-    description: 'Go crypter/stub maker for mach-o binaries. the loader decrypts, executes, and self deletes",',
+    description: 'Go crypter/stub maker for mach-o binaries. the loader decrypts, executes, and self deletes.',
     tech: ['Golang', 'Mach-O', 'Mac-OS', 'Red Teaming'],
     github: 'https://github.com/carved4/mach-o-crypter',
     live: 'https://github.com/carved4/mach-o-crypter/blob/main/README.md',
