@@ -10,12 +10,12 @@ import { useTheme } from '../context/ThemeContext'
 
 const projects = [
   {
-    title: './nutrition-tracker',
-    description: 'A nutrition tracking application that helps users monitor their daily nutritional intake and maintain a healthy diet.',
-    tech: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],
-    github: 'https://github.com/carved4/nutrihelper',
-    live: 'https://nutrihelp.lol',
-    icon: IoNutritionOutline,
+    title: './forge-passkeys-go',
+    description: 'A Go implementation of the "Forging Passkeys" research demonstrating virtual FIDO2/WebAuthn authenticators for educational and authorized security testing purposes..',
+    tech: ['Go', 'FIDO2', 'WebAuthn', 'Emulation', 'Security'],
+    github: 'https://github.com/carved4/forge-passkeys-go',
+    live: 'https://github.com/carved4/forge-passkeys-go/blob/main/README.md',
+    icon: BsBook,
   },
   {
     title: './go-crypter',
@@ -58,12 +58,12 @@ const projects = [
     icon: BsBook,
   },
   {
-    title: './convert.sh',
-    description: 'A versatile file conversion platform that enables users to seamlessly transform documents and media files between different formats with an intuitive drag-and-drop interface.',
-    tech: ['Vite', 'Tailwind', 'Javascript', 'Next.js', 'Node.js'],
-    github: 'https://github.com/carved4/fileconversionhub',
-    live: 'https://fileconverthub.vercel.app',
-    icon: BsFileEarmarkArrowUp,
+    title: './go-uac-bypass',
+    description: 'A UAC bypass technique using Windows directory parsing quirks and DLL hijacking with support for multiple auto-elevate binaries.',
+    tech: ['Golang', 'Maldev', 'Windows Internals', 'System Programming'],
+    github: 'https://github.com/carved4/go-uac',
+    live: 'https://github.com/carved4/go-uac?tab=readme-ov-file#demo',
+    icon: BsBook,
   },
   {
     title: './leetcode --help',
